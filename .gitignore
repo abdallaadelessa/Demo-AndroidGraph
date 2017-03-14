@@ -1,0 +1,42 @@
+*.iml
+#built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Windows thumbnail db
+Thumbs.db
+
+# OSX files
+.DS_Store
+
+# Eclipse project files
+.classpath
+.project
+
+# Android Studio
+#*.iml
+.idea
+.idea/
+.gradle/
+.gradle/2.8/taskArtifacts/
+.gradle/2.8/taskArtifacts/cache.properties.lock
+.gradle/2.8/taskArtifacts/fileHashes.bin
+.gradle/2.8/taskArtifacts/fileSnapshots.bin
+.gradle/2.8/taskArtifacts/taskArtifacts.bin
+build/
+
+#NDK
+obj/
