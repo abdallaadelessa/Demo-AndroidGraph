@@ -22,7 +22,6 @@ import com.vodafone.graph.model.ShapeModel;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -241,29 +240,24 @@ public class GraphView extends View {
             ConnectedCirclesModel.ConnectedCircle currentCircle = shape.getCircles().get(i);
             ConnectedCirclesModel.ConnectedCircle nextCircle = i + 1 < size ? shape.getCircles().get(i + 1) : null;
             if (nextCircle != null) {
-                float r1 = (float) (currentCircle.getRadius() - shapePaint.getStrokeWidth());
-                float r2 = (float) (nextCircle.getRadius() - shapePaint.getStrokeWidth());
+                float r1 = (float) (currentCircle.getRadius());
+                float r2 = (float) (nextCircle.getRadius() - shapePaint.getStrokeWidth() + 10);
 
                 float lineXStart = toViewXCoord(currentCircle.getOrigin().getX());
                 float lineYStart = toViewYCoord(currentCircle.getOrigin().getY());
                 float lineXEnd = toViewXCoord(nextCircle.getOrigin().getX());
                 float lineYEnd = toViewYCoord(nextCircle.getOrigin().getY());
 
-//                float degree = CircleUtil.getDegree(new PointF(lineXStart, lineYStart), new PointF(lineXEnd, lineYEnd));
-//                PointF startTangentPoint = CircleUtil.getTangentPointOfCircle(r1, degree);
-//                PointF endTangentPoint = CircleUtil.getTangentPointOfCircle(r2, degree);
-//
-//                PointF point1 = CircleUtil.getDrawingCenterPointInViewGroup(new PointF(lineXStart, lineYStart), startTangentPoint);
-//                PointF point2 = CircleUtil.getDrawingCenterPointInViewGroup(new PointF(lineXEnd, lineYEnd), endTangentPoint);
-//                lineXStart = point1.x;
-//                lineYStart = point1.y;
-//                lineXEnd = point2.x;
-//                lineYEnd = point2.y;
+                float degree = CircleUtil.getDegree(new PointF(lineXStart, lineYStart), new PointF(lineXEnd, lineYEnd));
+                PointF startTangentPoint = CircleUtil.getTangentPointOfCircle(r1, degree, false);
+                PointF endTangentPoint = CircleUtil.getTangentPointOfCircle(r2, degree, true);
 
-//                lineXStart += r1;
-//                lineYStart += r1;
-//                lineXEnd -= r2;
-//                lineYEnd -= r2;
+                PointF point1 = CircleUtil.getDrawingTangentPointInViewGroup(new PointF(lineXStart, lineYStart), startTangentPoint);
+                PointF point2 = CircleUtil.getDrawingTangentPointInViewGroup(new PointF(lineXEnd, lineYEnd), endTangentPoint);
+                lineXStart = point1.x;
+                lineYStart = point1.y;
+                lineXEnd = point2.x;
+                lineYEnd = point2.y;
 
                 drawLineSegment(canvas, new LineModel(
                         new PointModel(toGraphXCoord(lineXStart), toGraphYCoord(lineYStart))

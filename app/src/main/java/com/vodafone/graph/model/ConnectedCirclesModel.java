@@ -28,6 +28,10 @@ public class ConnectedCirclesModel extends ShapeModel {
         private int nextLineColor;
         private int nextLineType;
 
+        public ConnectedCircle(PointModel origin, double radius, int color, int type) {
+            super(origin, radius, color, type);
+        }
+
         public ConnectedCircle(PointModel origin, double radius, int color, int type, int nextLineColor, int nextLineType) {
             super(origin, radius, color, type);
             this.nextLineColor = nextLineColor;

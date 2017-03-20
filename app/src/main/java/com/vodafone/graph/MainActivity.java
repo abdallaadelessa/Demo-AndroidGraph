@@ -38,17 +38,14 @@ public class MainActivity extends AppCompatActivity {
         //==> Graph
         ArrayList<ShapeModel> shapes = new ArrayList<>();
         ConnectedCirclesModel connectedCirclesModel = new ConnectedCirclesModel();
+        connectedCirclesModel.addCircle(new ConnectedCirclesModel.ConnectedCircle(new PointModel(0, 0), 20, Color.BLUE, CircleModel.TYPE_STROKED, Color.BLACK, LineModel.NORMAL));
+        connectedCirclesModel.addCircle(new ConnectedCirclesModel.ConnectedCircle(new PointModel(5, 0), 20, Color.BLUE, CircleModel.TYPE_STROKED, Color.BLACK, LineModel.NORMAL));
         connectedCirclesModel.addCircle(new ConnectedCirclesModel.ConnectedCircle(new PointModel(5, 0.2), 20, Color.BLUE, CircleModel.TYPE_STROKED, Color.BLACK, LineModel.NORMAL));
-        connectedCirclesModel.addCircle(new ConnectedCirclesModel.ConnectedCircle(new PointModel(10, 0.8), 20, Color.GREEN, CircleModel.TYPE_STROKED, Color.BLUE, LineModel.DASH));
-        connectedCirclesModel.addCircle(new ConnectedCirclesModel.ConnectedCircle(new PointModel(15, 1.9), 20, Color.RED, CircleModel.TYPE_STROKED, Color.RED, LineModel.NORMAL));
-        connectedCirclesModel.addCircle(new ConnectedCirclesModel.ConnectedCircle(new PointModel(20, 2.4), 20, Color.YELLOW, CircleModel.TYPE_FILLED, Color.BLUE, LineModel.DASH));
-        connectedCirclesModel.addCircle(new ConnectedCirclesModel.ConnectedCircle(new PointModel(25, 2.9), 20, Color.MAGENTA, CircleModel.TYPE_FILLED, Color.BLACK, LineModel.NORMAL));
+        connectedCirclesModel.addCircle(new ConnectedCirclesModel.ConnectedCircle(new PointModel(10, 0.8), 30, Color.GREEN, CircleModel.TYPE_STROKED, Color.YELLOW, LineModel.DASH));
+        connectedCirclesModel.addCircle(new ConnectedCirclesModel.ConnectedCircle(new PointModel(15, 1.9), 50, Color.MAGENTA, CircleModel.TYPE_FILLED, Color.BLUE, LineModel.DASH));
+        connectedCirclesModel.addCircle(new ConnectedCirclesModel.ConnectedCircle(new PointModel(20, 2.4), 0, Color.GREEN, CircleModel.TYPE_FILLED, Color.RED, LineModel.NORMAL));
+        connectedCirclesModel.addCircle(new ConnectedCirclesModel.ConnectedCircle(new PointModel(25, 2.9), 20, Color.RED, CircleModel.TYPE_FILLED));
         shapes.add(connectedCirclesModel);
-//        shapes.add(new LineModel(new PointModel(15, 2), new PointModel(30, 1), Color.RED, LineModel.DASH));
-//        shapes.add(new CircleModel(new PointModel(15, 2), 20, ContextCompat.getColor(this, android.R.color.black), CircleModel.TYPE_FILLED));
-//        shapes.add(new CircleModel(new PointModel(30, 1), 20, ContextCompat.getColor(this, android.R.color.black), CircleModel.TYPE_FILLED));
-        //  shapes.add(new LineModel(new PointModel(3, 3), new PointModel(4, 4), ContextCompat.getColor(this, android.R.color.black), LineModel.NORMAL));
-
         // Add Data
         graphView.setData(xAxisPoints, yAxisPoints, shapes);
     }

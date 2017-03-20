@@ -9,21 +9,25 @@ import android.view.View;
 
 public class CircleUtil {
 
-    public static float getDegree(PointF startingPointF, PointF endingPointF){
-        float y = endingPointF.y - startingPointF.y;
+    public static float getDegree(PointF startingPointF, PointF endingPointF) {
+        float y = -1 * (endingPointF.y - startingPointF.y);
         float x = endingPointF.x - startingPointF.x;
-        double radiun = Math.atan(y/x);
-        return (float) (radiun * (180F/Math.PI));
+        double radiun = Math.atan(y / x);
+        return (float) (radiun * (180F / Math.PI));
     }
 
 
-    public static PointF getTangentPointOfCircle(float radius, float degree) {
+    public static PointF getTangentPointOfCircle(float radius, float degree, boolean revertSign) {
         double xTangent = (radius) * Math.cos(degree * (Math.PI / 180F));
         double yTangent = -1 * (radius) * Math.sin(degree * (Math.PI / 180F));
+        if (revertSign) {
+            xTangent *= -1;
+            yTangent *= -1;
+        }
         return new PointF((float) xTangent, (float) yTangent);
     }
 
-    public static PointF getDrawingCenterPointInViewGroup(PointF centerPoint, PointF tangentPointOfCircle) {
+    public static PointF getDrawingTangentPointInViewGroup(PointF centerPoint, PointF tangentPointOfCircle) {
         float xDrawingCenterPoint = centerPoint.x + tangentPointOfCircle.x;
         float yDrawingCenterPoint = centerPoint.y + tangentPointOfCircle.y;
         return new PointF(xDrawingCenterPoint, yDrawingCenterPoint);
