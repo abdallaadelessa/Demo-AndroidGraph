@@ -1,7 +1,9 @@
 package com.vodafone.graph;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.util.DisplayMetrics;
 
 import com.vodafone.graph.model.PointModel;
@@ -43,5 +45,11 @@ public class GraphUtils {
     public static int pxToDp(Context context, int px) {
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         return Math.round(px / (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT));
+    }
+
+    public static Rect getTextRect(Paint paint, String text) {
+        Rect bounds = new Rect();
+        paint.getTextBounds(text, 0, text.length(), bounds);
+        return bounds;
     }
 }

@@ -1,7 +1,5 @@
 package com.vodafone.graph.model;
 
-import java.util.Comparator;
-
 /**
  * Created by abdullah on 3/12/17.
  */
@@ -9,6 +7,7 @@ import java.util.Comparator;
 public class AxisPointModel {
     private double value;
     private String text;
+    private boolean hidden;
 
     public AxisPointModel(double value) {
         this.value = value;
@@ -20,6 +19,18 @@ public class AxisPointModel {
         this.text = text;
     }
 
+    public AxisPointModel(double value, boolean hidden) {
+        this.value = value;
+        this.hidden = hidden;
+    }
+
+    public AxisPointModel(double value, String text, boolean hidden) {
+        this.value = value;
+        this.text = text;
+        this.hidden = hidden;
+    }
+
+
     public double getValue() {
         return value;
     }
@@ -28,4 +39,7 @@ public class AxisPointModel {
         return text;
     }
 
+    public boolean isHidden() {
+        return hidden;
+    }
 }

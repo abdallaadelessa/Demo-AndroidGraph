@@ -4,7 +4,7 @@ package com.vodafone.graph.model;
  * Created by abdullah on 3/12/17.
  */
 
-public class PointModel {
+public class PointModel implements Cloneable {
     private double x;
     private double y;
 
@@ -30,5 +30,15 @@ public class PointModel {
 
     public void setX(double x) {
         this.x = x;
+    }
+
+    @Override
+    public PointModel clone() {
+        try {
+            return (PointModel) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

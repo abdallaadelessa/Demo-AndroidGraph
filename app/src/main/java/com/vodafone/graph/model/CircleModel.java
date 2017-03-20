@@ -1,8 +1,5 @@
 package com.vodafone.graph.model;
 
-import android.graphics.Canvas;
-import android.graphics.Paint;
-
 /**
  * Created by abdullah on 3/12/17.
  */
@@ -14,10 +11,28 @@ public class CircleModel extends ShapeModel {
     private double radius;
     private int type;
 
+    public CircleModel(double radius, int color, int type) {
+        super(color);
+        this.radius = radius;
+        this.type = type;
+    }
+
     public CircleModel(PointModel origin, double radius, int color, int type) {
         super(color);
         this.origin = origin;
         this.radius = radius;
+        this.type = type;
+    }
+
+    public void setOrigin(PointModel origin) {
+        this.origin = origin;
+    }
+
+    public void setRadius(double radius) {
+        this.radius = radius;
+    }
+
+    public void setType(int type) {
         this.type = type;
     }
 
